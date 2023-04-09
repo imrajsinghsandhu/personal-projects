@@ -19,7 +19,7 @@ localIP = "127.0.0.1"
 port = 8000
 
 # send a message to the server
-message = "Hey server!"
+message = "Hey serverr!" # 12 characters --> will be the number of bytes recieved at the server
 sock.sendto(message.encode("utf-8"), (localIP, port))
 
 # process the message received from the server

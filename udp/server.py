@@ -28,9 +28,12 @@ def main():
         data, address = sock.recvfrom(1024)
 
         print("rec'd message from {}: {}".format(address, data.decode("utf-8")))
+        
+        # reply with the packet size in bytes
+        length = len(data)
 
         # now reply to the client
-        replyMessage = "Hello friend! Thanks for packet no. {}!".format(packetCount)
+        replyMessage = "Hello friend! Thanks for packet no. {}, size : {}!".format(packetCount, length)
         sock.sendto(replyMessage.encode("utf-8"), address)
         packetCount += 1
 
