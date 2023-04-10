@@ -1,4 +1,6 @@
 import socket
+import server
+import math
 
 '''
 in a nutshell, you just gotta send data to the UDP server, and that it. No verification is required.
@@ -18,15 +20,35 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 localIP = "127.0.0.1"
 port = 8000
 
+server_bufferSize = server.bufferSize
 # send a message to the server
-message = "Hey serverr!" # 12 characters --> will be the number of bytes recieved at the server
-sock.sendto(message.encode("utf-8"), (localIP, port))
 
-# process the message received from the server
-bufferSize = 1024
-data, address = sock.recvfrom(bufferSize)
+# read txtfile
+fileContents = open("transferText.txt", "r")
+message = fileContents.read()
+message_bytes = message.encode("utf-8")
+print("length of message in bytes: {}".format(len(message_bytes))) 
 
-print("received message : {} from serverAddress: {}".format(data.decode("utf-8"), address))
+# Split the string into fixed-size chunks
+chunks = [message_bytes[i:i+server_bufferSize] for i in range(0, len(message_bytes), server_bufferSize)]
+num_iters_for_full_transfer = len(chunks)
+# iterate for num_iters_for_full_transfer of times to fully transfer the message
 
-# close the socket
-sock.close()
+packetsReceived = 0
+
+for i in range(0, num_iters_for_full_transfer):
+    # will transfer each packet
+    sock.sendto(chunks[i], (localIP, port))
+
+    data, addr = sock.recvfrom(1024)
+
+    dataSize = data.decode("utf-8")
+    packetsReceived = dataSize
+
+if ((int(packetsReceived) * server_bufferSize) < num_iters_for_full_transfer):
+    print("PACKET LOSTTTT")
+else :
+    print("Alls good")
+
+# # close the socket
+# sock.close()
