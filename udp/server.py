@@ -7,7 +7,7 @@ to create a reliable connection with a server unlike TCP/IP
 '''
 def main():
 
-    # In summary, AF_INET is used to specify the address family (IPv4 in this case
+    # In summary, AF_INE is used to specify the address family (IPv4 in this case
     # SOCK_DGRAM is used to specify the socket type (datagram socket in this case, which uses the UDP protocol)
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     localIP = "127.0.0.1"
