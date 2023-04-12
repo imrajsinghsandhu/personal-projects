@@ -24,7 +24,7 @@ def main():
         
         # recvfrom will receive data from incoming message for up to bufferSize bytes
         # excess will be truncated, so send data in packets of bufferSize bytes
-        data, address = sock.recvfrom(60000)
+        data, address = sock.recvfrom(buffer_size)
         # now reply to the client with the count of packets
         replyMessage = "{}".format(packetCount)
         sock.sendto(replyMessage.encode("utf-8"), address)
