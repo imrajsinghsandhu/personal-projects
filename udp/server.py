@@ -1,6 +1,6 @@
 import socket
 
-bufferSize = 1
+buffer_size = 60000
 
 '''
 a udp connection is a socketless connection
@@ -15,6 +15,7 @@ def main():
     localIP = "127.0.0.1"
     port = 8000 # must be a number
     sock.bind((localIP, port)) # binding is done when you want to receive incomping data to that address
+    print("server socket binded...")
 
     packetCount = 1
 
@@ -23,7 +24,7 @@ def main():
         
         # recvfrom will receive data from incoming message for up to bufferSize bytes
         # excess will be truncated, so send data in packets of bufferSize bytes
-        data, address = sock.recvfrom(bufferSize)
+        data, address = sock.recvfrom(60000)
         # now reply to the client with the count of packets
         replyMessage = "{}".format(packetCount)
         sock.sendto(replyMessage.encode("utf-8"), address)
