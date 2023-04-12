@@ -14,14 +14,6 @@ service that requires a reliable connecton - such as TCP/IP
 UDP is used for low latency services, and is used for systems where packet loss is allowed.
 '''
 
-'''
-in this branch, we need to create a timestamp feature, that allows us to monitor the timestamps of callbacks from
-server. 
-1. Import time library
-2. start a timestamp right before sending the packet, 
-3. end the timestamp when call back received
-4. print out the timestamp
-'''
 # initialise the socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
