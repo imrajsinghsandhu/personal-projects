@@ -14,6 +14,13 @@ service that requires a reliable connecton - such as TCP/IP
 UDP is used for low latency services, and is used for systems where packet loss is allowed.
 '''
 
+# Branch description
+'''
+1. Allow for visualisation of data analysis by plotting the results in matplotlib
+2. Allow for command line interface where user is able to input if they want data analysis visualisation or not
+3. Follow good coding standards where applicable
+'''
+
 # initialise the socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
