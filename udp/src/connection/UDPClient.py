@@ -28,9 +28,9 @@ class UDPClient(UDPConnection):
         diff_time = timestamp_end - timestamp_start # in seconds
 
         if ((int(packetsReceived) * self._buffer_size) < num_iters):
-            print("PACKET LOSTTTT")
+            print("PACKET LOSTTTT!")
         else :
-            print("Alls good")
+            print("No packet loss...")
 
         # printing time taken for callback
         print("Time taken : {:.5f} seconds".format(diff_time))
