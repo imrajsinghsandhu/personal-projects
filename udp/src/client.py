@@ -1,6 +1,5 @@
 import sys
-from connection.UDPServer import UDPServer
-from connection.UDPClient import UDPClient
+from src.connection.UDPClient import UDPClient
 
 '''
 Main file that handles the CLI-arguments and calls the sub class in this project
@@ -8,6 +7,7 @@ Main file that handles the CLI-arguments and calls the sub class in this project
 
 # is args present?
 def is_args_present() -> bool:
+    print ("length of args : {}".format(len(sys.argv)))
     if (len(sys.argv) > 1):
         return True
     else: 

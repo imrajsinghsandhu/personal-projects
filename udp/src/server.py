@@ -1,5 +1,4 @@
-from connection.UDPServer import UDPServer
-from connection.UDPClient import UDPClient
+from src.connection.UDPServer import UDPServer
 
 '''
 Main file that handles the CLI-arguments and calls the sub class in this project

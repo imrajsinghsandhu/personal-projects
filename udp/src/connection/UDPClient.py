@@ -1,6 +1,8 @@
-from connection.UDPConnection import UDPConnection
 import time
 import socket
+import os 
+
+from src.connection.UDPConnection import UDPConnection
 
 class UDPClient(UDPConnection):
 
@@ -40,7 +42,8 @@ class UDPClient(UDPConnection):
 
         sock : socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # read txtfile, return the contents in bytes form
-        message_in_bytes : bytes = self._read_data("data/transferText.txt")
+        file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'transferText.txt'))
+        message_in_bytes : bytes = self._read_data(file_path)
 
         # Split the string into fixed-size packets
         chunks = [message_in_bytes[i:i+self._buffer_size] for i in range(0, len(message_in_bytes), self._buffer_size)]

@@ -1,5 +1,5 @@
-from connection.UDPConnection import UDPConnection
 import socket
+from src.connection.UDPConnection import UDPConnection
 
 class UDPServer(UDPConnection):
     
